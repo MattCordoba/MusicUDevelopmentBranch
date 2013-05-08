@@ -11,14 +11,14 @@
 </dl-->
 
 <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
+      <div class="carousel-inner center">
         <div class="item active">
           <img src="http://images4.fanpop.com/image/photos/17300000/Metallica-metallica-17311296-1600-1200.jpg" alt="">
-          <div class="container">
+          <div class="container center">
             <div class="carousel-caption">
               <h1>Lyrics</h1>
-              <p class="lead"><%= truncate(@song.lyric, :length => 100, :separator => ' ')%></p>
-              <a class="btn btn-large btn-primary" href="#">View</a>
+              <p class="lead"><%= truncate(@song.lyric, :length => 100, :separator => ' ; ')%></p>
+              <a class="btn btn-large btn-primary right" href="#">View</a>
             </div>
           </div>
         </div>
@@ -80,4 +80,6 @@
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
+  <%= link_to "Share on Facebook", "/path", :class => 'btn btn-info pull-right'  %>  
+  <%= link_to "Share on Twitter", "/path", :class => 'btn btn-primary pull-right'  %>           
 </div>

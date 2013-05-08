@@ -20,4 +20,18 @@ class SongsController < ApplicationController
       render :action => 'edit'
     end
   end
+  def new
+    @artist = Artist.find(params[:artist_id])
+    @song = @artist.songs.new    
+  end
+  def create
+    
+    @artist = Artist.find(params[:artist_id])
+    @song = @artist.songs.new(params[:song])
+    if @song.save
+      redirect_to @artist, :notice => "Successfully created artist."
+    else
+      render :action => 'new'
+    end
+  end
 end
