@@ -1,6 +1,9 @@
 <%- model_class = Song -%>
 <div class="page-header">
-  <h1><%= @song.name %> by <%= @artist.name %></h1>
+  <center><h1><%= @song.name %> by <%= @artist.name %></h1></center>
+  <center>
+  	<audio controls width ="500"></audio>
+  </center>
 </div>
 
 <!--dl class="dl-horizontal">
@@ -9,77 +12,140 @@
   <dt><strong><%= model_class.human_attribute_name(:lyric) %>s:</strong></dt>
   <dd><%= @song.lyric %></dd>
 </dl-->
-
-<div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner center">
-        <div class="item active">
-          <img src="http://images4.fanpop.com/image/photos/17300000/Metallica-metallica-17311296-1600-1200.jpg" alt="">
-          <div class="container center">
-            <div class="carousel-caption">
-              <h1>Lyrics</h1>
-              <p class="lead"><%= truncate(@song.lyric, :length => 100, :separator => ' ; ')%></p>
-              <a class="btn btn-large btn-primary right" href="#">View</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="http://images6.fanpop.com/image/photos/32200000/metallica-metallica-32272631-800-640.png" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Subscribe to <%= @artist.name %></h1>
-              <p class="lead">Subscribe in order to integrate <%= @artist.name%>'s content into your account!</p>
-              <a class="btn btn-large btn-warning" href="#">Subscribe</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="http://images.fanpop.com/images/image_uploads/Metallica-metallica-150433_850_600.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Blank</h1>
-              <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-    </div>
-<ul class="thumbnails">
-  <li class="span3">
-    <div class="thumbnail">
-      <img data-src="holder.js/360x270" alt="">
-      <center><h3><%= link_to "Pictures", "/path" %></h3>
-      <p>View pictures uploaded about "<%= @song.name %>"</p></center>
-    </div>
-  </li>
-  <li class ="span3">
-  	<div class = "thumbnail">
-  		<img data-src = "holder.js/360x270" alt="">
-  		<center><h3><%= link_to "Covers and Remixes", "/path" %></h3>
-      <p>View other interpretations of "<%= @song.name %>" !</p></center>
-  	</div>
-  	</li>
-  	<li class ="span3">
-  	<div class = "thumbnail">
-  		<img data-src = "holder.js/360x270" alt="">
-  		<center><h3><%= link_to "Live Performances", "/path" %></h3>
-      <p>View footage of "<%= @song.name %>" live !</p></center>
-  	</div>
-  	</li>
-</ul>
+<div class ="row">
+	<div class ="span6">
+		<ul class="thumbnails">
+		  <li class="span6">
+		    <div class="thumbnail center">
+		      <img data-src="holder.js/360x270" alt="">
+		      <center><h3><%= link_to "Pictures", artist_song_pictures_path(@artist, @song) %></h3>
+		      <div class ="row">
+		      	<center>
+		      		<div class = "span 1"><img src = "http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>	
+		      		<div class = "span 1"><img src="http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>	
+		      		<div class = "span 1"><img src="http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>	
+		      		<div class = "span 1"><img src="http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>	
+		      		<div class = "span 1"><img src="http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>
+		      		<div class = "span 1"><img src="http://arts.mit.edu/wp-content/uploads/blank-image-590.jpg" width="65" height="50" alt=""></div>		
+		      	</center>
+		      </div>
+		      <p>View pictures uploaded about "<%= @song.name %>"</p></center>
+		    </div>
+		  </li>
+	<div class="span6">
+		  <div class = "row">
+		  	<div class = "span2">
+		  		<ul class= "thumbnail">
+		  			<center>
+			  			<h3> <%= link_to "Comments", "/path/for/comments" %>, <%= link_to "Tweets", "/path/for/tweets" %> <%= link_to "and Statuses", "/path/for/facebook" %> about "<%= @song.name%>"</h3>
+			  				<p> [Place Holder]</p><br />
+			  				<p> --> In Build</p><br />
+			  				<p> [Place Holder]</p><br />
+			  				<p> --> In Build</p><br />
+			  				<p> [Place Holder]</p><br />
+			  				<p> --> In Build</p><br />
+		  			</center>
+		  		</ul>
+		  		
+		  	</div>
+		  	<div class ="span4">
+		  		<ul class = "thumbnails">
+				  <li class ="span4">
+				  	<div class = "thumbnail center">
+				  		<img data-src = "holder.js/360x270" alt="">
+				  		<center><h3><%= link_to "Covers and Remixes", "/path" %></h3>
+				  			<video controls height="250" width="360"></video>
+				      <p>View other interpretations of "<%= @song.name %>" !</p></center>
+				  	</div>
+				  	</li>
+				  	<!--li class ="span4">
+				  	<div class = "thumbnail center">
+				  		<img data-src = "holder.js/360x270" alt="">
+				  		<center><h3><%= link_to "Live Performances", "/path" %></h3>
+				      <p>View footage of "<%= @song.name %>" live !</p></center>
+				  	</div>
+				  	</li-->
+				  </ul>
+				</div>
+			</div>
+			</div>
+		</ul>
+	</div><!--for thumbnail columns-->
+	<div class = "span4">
+		<div class = "row">
+			<div class = "span4">
+				<div id="myCarousel" class="carousel slide">
+				      <div class="carousel-inner center">
+				        <div class="item active">
+				          <%= image_tag @song.image %>
+				          <div class="container center">
+				            <div class="carousel-caption">
+				              <center><h1>Lyrics</h1></center>
+				              <center><p class="lead"><%= truncate(@song.lyric, :length => 100, :separator => ' ; ')%></p></center>
+				              <center><a class="btn btn-large btn-primary right" href="#">View</a></center>
+				            </div>
+				          </div>
+				        </div>
+				        <div class="item">
+				          <img src="http://www.tristateindie.com/wp-content/uploads/2013/02/metallica-1a.jpg" alt="">
+				          <div class="container">
+				            <div class="carousel-caption">
+				              <center><h1>Subscribe to <%= @artist.name %></h1></center>
+				              <center>
+				              <p class="lead">Subscribe in order to integrate <%= @artist.name%>'s content into your account!</p>
+				              <a class="btn btn-large btn-warning" href="#">Subscribe</a>
+				              </center>
+				            </div>
+				          </div>
+				        </div>
+				        <div class="item">
+				          <img src="http://videokeman.com/image/pics/MetallicasongPics1c0rRU9psFSdsUM.jpg" alt="">
+				          <div class="container">
+				            <div class="carousel-caption">
+				              <center><h1>News</h1></center>
+				              <center>
+				              <p class="lead">View news about <%= @artist.name %></p>
+				              <a class="btn btn-large btn-primary" href="http://www.music-news.com/">Browse</a>
+				              </center>
+				            </div>
+				          </div>
+				        </div>
+				      </div>
+				      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+				      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+				    </div>
+				 </div> 
+				<div class = "span4">
+		  			<ul class = "thumbnails">
+					  <li class ="span4">
+					  	<div class = "thumbnail center">
+				  			<img data-src = "holder.js/360x270" alt="">
+				  			<center><h3><%= link_to "Live Performances", "/path" %></h3>
+				  				<video controls height ="120" width ="180"></video>
+				      		<p>View footage of "<%= @song.name %>" live !</p></center>
+				  		</div>
+				  		</li>
+				  	</ul>
+				 
+					  	
+					
+					
+					
+				</div>
+			</div>
+	</div><!--carousel column-->
+</div><!--row div-->
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               artist_path(@artist), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_artist_song_path(@song), :class => 'btn' %>
+              edit_artist_song_path(@artist), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              '/path',
+              artist_song_path(@artist, @song),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
-  <%= link_to "Share on Facebook", "/path", :class => 'btn btn-info pull-right'  %>  
-  <%= link_to "Share on Twitter", "/path", :class => 'btn btn-primary pull-right'  %>           
+  <a class="btn btn-large btn-info pull-right" href="facebook.com">Share on Facebook</a>
+  <a class="btn btn-large btn-primary pull-right" href="twitter.com">Share on Twitter</a>         
 </div>

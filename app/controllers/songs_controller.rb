@@ -1,7 +1,7 @@
 class SongsController < ApplicationController
   def index
-    @artist = Artist.find(params[:artist_id])
-    @songs = Song.all
+    @artists = Artist.all
+    @songs = @artists.songs
   end
   def show
     @artist = Artist.find(params[:artist_id])
@@ -32,6 +32,13 @@ class SongsController < ApplicationController
       redirect_to @artist, :notice => "Successfully created artist."
     else
       render :action => 'new'
+    end
+  end
+  def destroy
+    @artist = Artist.find(params[:artist_id])
+    @song = @artist.songs.find(params[:id])
+    if @song.destroy
+      redirect_to artist_path(@artist), :notice => "Song Succesfully Deleted"
     end
   end
 end

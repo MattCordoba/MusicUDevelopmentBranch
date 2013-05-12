@@ -9,9 +9,9 @@
 </dl>
 
 <% @artist.songs.each do |song| %>
-<ol>
-	<li><%= link_to song.name, artist_song_path(@artist) %></li>
-</ol>
+<ul>
+	<li><%= link_to song.name, artist_song_path(@artist, song)%></li>
+</ul>
 <% end %>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
